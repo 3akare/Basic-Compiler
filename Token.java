@@ -7,7 +7,7 @@ public class Token{
         this.tokenType = tokenType;
     }
 
-    public static TokenType checkIfKeyword(String tokenText){
+    protected static TokenType checkIfKeyword(String tokenText){
         for(TokenType tokenType :TokenType.values()){
             if (tokenType.name().equals(tokenText) && tokenType.ordinal() >= 5 && tokenType.ordinal() <= 15)
                 return tokenType;

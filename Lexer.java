@@ -1,7 +1,7 @@
 public class Lexer {
-    protected final String source;
-    protected char curChar;
-    protected int curPos;
+    private final String source;
+    private char curChar;
+    private int curPos;
 
     public Lexer(String source){
         this.source = source + '\n';
@@ -10,7 +10,7 @@ public class Lexer {
         nextChar();
     }
 
-    public void nextChar(){
+    private void nextChar(){
         this.curPos += 1;
         if (this.curPos >= this.source.length())
             this.curChar = '\0';
@@ -18,30 +18,30 @@ public class Lexer {
             this.curChar = this.source.charAt(curPos);
     }
 
-    public char peek(){
+    private char peek(){
         if(this.curPos + 1 >= this.source.length())
                 return '\0';
         return this.source.charAt(curPos + 1);
     }
 
-    public void abort(String message){
+    private void abort(String message){
         System.out.println("Lexing Error: " + message);
         System.exit(1);
     }
 
-    public void skipWhitespace(){
+    private void skipWhitespace(){
         while (this.curChar == ' ' || this.curChar == '\t' || this.curChar == '\r')
             nextChar();
     }
 
-    public void skipComment(){
+    private void skipComment(){
         if (this.curChar == '#') {
                 while (this.curChar != '\n')
                     nextChar();
         }
     }
 
-    public Token getToken(){
+    protected Token getToken(){
         skipWhitespace();
         skipComment();
         Token token = switch (this.curChar) {
