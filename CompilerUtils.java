@@ -3,8 +3,13 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class CompilerUtils {
-    public static String readFile(String fileName) {
-        File file = new File(fileName);
+    public static String readFile(String filename){
+        if(!filename.endsWith(".ty")){
+            System.out.println("Invalid file type: " + filename);
+            System.exit(1);
+        }
+
+        File file = new File(filename);
         String fileText = "";
         try {
             Scanner scanner = new Scanner(file);
@@ -20,7 +25,7 @@ public class CompilerUtils {
             return null;
         }
         catch (Exception e){
-            System.out.println("Error: An error occurred when reading file: " + fileName);
+            System.out.println("Error: An error occurred when reading file: " + filename);
             return null;
         }
     }

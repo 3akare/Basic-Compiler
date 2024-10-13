@@ -1,20 +1,24 @@
-import java.util.Arrays;
-
 public class Compiler{
     public static void main(String[] args){
 
-        if(args.length != 1){
-            System.out.println("Error: Compiler needs a single source file as argument.");
+        if(args.length != 2){
+            System.out.print("Error: Compiler needs two files as argument ");
+            System.out.println("input file (.ty) output file (.java)");
             System.exit(1);
         }
 
+        System.out.println("Starting compiler");
         String source = CompilerUtils.readFile(args[0]);
 
         if (source == null)
             System.exit(1);
 
         Lexer lexer = new Lexer(source);
-        Parser parser = new Parser(lexer);
+        Emitter emitter = new Emitter(args[1]);
+        Parser parser = new Parser(lexer, emitter);
+
         parser.program();
+        emitter.writeFile();
+        System.out.println("Compiling completed\n\n");
     };
 }
