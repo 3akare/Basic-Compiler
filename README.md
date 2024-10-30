@@ -62,5 +62,30 @@ while (N < 10) {
 console.log("DONE!");
 ```
 
-## Conclusion
-The Basic Compiler serves as a practical exercise in understanding compiler design and the translation of programming languages. Through this project, I've gained valuable insights into parsing, syntax analysis, and code generation. This experience has not only improved my programming skills but also deepened my understanding of how compilers work.
+## Contributions
+Contributions to the Basic Compiler project are welcome! If you'd like to contribute, please follow these steps:
+
+1. **Fork the Repository:** Click on the fork button at the top right of the repository page.
+2. **Clone Your Fork:** Clone your forked repository to your local machine using:
+   ```bash
+   git clone https://github.com/your-username/basic-compiler.git
+   ```
+3. **Create a Branch:** Create a new branch for your feature or bug fix:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. **Make Your Changes:** Implement your feature or fix the bug.
+5. **Commit Your Changes:** Commit your changes with a descriptive message:
+   ```bash
+   git commit -m "Add feature: your feature description"
+   ```
+6. **Push to Your Fork:** Push your changes to your fork:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+7. **Create a Pull Request:** Go to the original repository and click on "New Pull Request." Compare your changes and submit the pull request for review.
+
+### Guidelines for Contributions
+- Ensure your code follows the project's coding style and standards.
+- Write clear and concise commit messages.
+- Test your changes thoroughly before submitting.

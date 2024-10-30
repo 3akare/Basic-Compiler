@@ -1,5 +1,5 @@
 # This program prints 1 to 10
-LET N = 1
+ -mLET N = 1
 
 WHILE N < 10 REPEAT
     PRINT "COUNTING: "
