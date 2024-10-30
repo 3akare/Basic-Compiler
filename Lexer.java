@@ -53,7 +53,7 @@ public class Lexer {
                 if (peek() == '='){
                     char lastChar = this.curChar;
                     nextChar();
-                    yield new Token(this.curChar + lastChar, TokenType.EQEQ);
+                    yield new Token(new StringBuilder().append(this.curChar).append(lastChar), TokenType.EQEQ);
                 }
                 else
                     yield new Token(this.curChar, TokenType.EQ);
@@ -62,7 +62,7 @@ public class Lexer {
                 if (peek() == '='){
                     char lastChar = this.curChar;
                     nextChar();
-                    yield new Token(this.curChar + lastChar, TokenType.GTEQ);
+                    yield new Token(new StringBuilder().append(this.curChar).append(lastChar), TokenType.GTEQ);
                 }
                 else
                     yield new Token(this.curChar, TokenType.GT);
@@ -71,7 +71,7 @@ public class Lexer {
                 if (peek() == '='){
                     char lastChar = this.curChar;
                     nextChar();
-                    yield new Token(this.curChar + lastChar, TokenType.LTEQ);
+                    yield new Token(new StringBuilder().append(this.curChar).append(lastChar), TokenType.LTEQ);
                 }
                 else
                     yield new Token(this.curChar, TokenType.LT);
@@ -80,7 +80,7 @@ public class Lexer {
                 if (peek() == '='){
                     char lastChar = this.curChar;
                     nextChar();
-                    yield new Token(this.curChar + lastChar, TokenType.NOTEQ);
+                    yield new Token(new StringBuilder().append(this.curChar).append(lastChar), TokenType.NOTEQ);
                 }
                 else {
                     abort("Unknown token: " + this.curChar);

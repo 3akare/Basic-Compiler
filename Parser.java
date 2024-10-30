@@ -50,18 +50,12 @@ public class Parser {
     }
 
     protected void program(){
-        emitter.headerLine("public class " + emitter.filename.replace(".java", "") + "{");
-        emitter.headerLine("public static void main(String[] args){");
-
         while(checkToken(TokenType.NEWLINE)){
             nextToken();
         }
         while(!checkToken(TokenType.EOF)){
             statement();
         }
-
-        emitter.emitLine("}");
-        emitter.emitLine("}");
 
         for (Object label: this.labelsGOTOed){
             if(!this.labelsDeclared.contains(label))
@@ -75,11 +69,11 @@ public class Parser {
             case PRINT -> {
                 nextToken();
                 if(checkToken(TokenType.STRING)){
-                    emitter.emitLine("System.out.println(\""+this.curToken.tokenText+"\");");
+                    emitter.emitLine("console.log(\""+this.curToken.tokenText+"\");");
                     nextToken();
                 }
                 else {
-                    emitter.emit("System.out.println(");
+                    emitter.emit("console.log(");
                     expression();
                     emitter.emitLine(");");
                 }
@@ -130,7 +124,7 @@ public class Parser {
                 nextToken();
                 if (!this.symbols.contains(this.curToken.tokenText)){
                     this.symbols.add(this.curToken.tokenText);
-                    emitter.headerLine("float " + this.curToken.tokenText + ";");
+                    emitter.headerLine("let " + this.curToken.tokenText + ";");
                 }
 
                 emitter.emit(this.curToken.tokenText + " = ");
@@ -140,17 +134,14 @@ public class Parser {
                 emitter.emitLine(";");
             }
             case INPUT -> {
+                abort("INPUT is no longer supported");
                 nextToken();
 
                 if (!this.symbols.contains(this.curToken.tokenText)){
                     this.symbols.add(this.curToken.tokenText);
-                    emitter.headerLine("float " + this.curToken.tokenText + ";");
+                    emitter.headerLine("let " + this.curToken.tokenText + ";");
                 }
-
-                if (this.curToken.tokenType == TokenType.NUMBER)
-                    emitter.emitLine(this.curToken.tokenText + " = String.valueOf(System.console().readLine());");
-                else
-                    emitter.emitLine(this.curToken.tokenText + " = System.console().readLine();");
+                emitter.emitLine(this.curToken.tokenText + " = input();");
                 match(TokenType.IDENT);
             }
             default -> abort("Invalid statement at : " + this.curToken.tokenText +" (" + this.curToken.tokenType +")");
