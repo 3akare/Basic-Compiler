@@ -8,7 +8,7 @@ public class Emitter {
     private String code;
 
     public Emitter(String filename){
-        if(!filename.endsWith(".java"))
+        if(!filename.endsWith(".js"))
             abort("Invalid file type: " + filename);
         this.filename = filename;
         this.header = "";

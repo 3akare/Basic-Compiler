@@ -3,7 +3,7 @@ public class Compiler{
 
         if(args.length != 2){
             System.out.print("Error: Compiler needs two files as argument ");
-            System.out.println("input file (.ty) output file (.java)");
+            System.out.println("input file (.ty) output file (.js)");
             System.exit(1);
         }
 
