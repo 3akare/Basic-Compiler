@@ -8,7 +8,7 @@ The compiler transpiles code written in Tiny BASIC into Javascript, then runs th
 
 - **Lexer:** Responsible for tokenization and classification of the input code.
 - **Parser:** Verifies the grammatical rules of the language.
-- **Emitter:** Translates the tokens into the desired C code.
+- **Emitter:** Translates the tokens into the desired Javascript code.
 
 ## Usage
 
